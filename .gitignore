@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.a
+*.so
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# Kubernetes
+.kube/
+*.kubeconfig
+
+# Helm
+charts/*/charts/
+*.tgz
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Credentials and secrets
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+
+# Local environment
+.env
+.env.local
+
+# Testing
+coverage/
+*.test
+test-results/
+
+# Backups
+*.backup
+*.bak
