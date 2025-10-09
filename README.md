@@ -21,6 +21,8 @@ The t3.large instance is recommended for Aether OnRamp deployment with the follo
 
 ## Quick Start
 
+**⚡ Want to get started quickly?** See [QUICKSTART.md](QUICKSTART.md) for a 25-minute deployment guide!
+
 ### 1. Launch AWS EC2 Instance
 
 ```bash
