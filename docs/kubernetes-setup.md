@@ -144,6 +144,44 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
+### Add an EC2 Worker Node (kubeadm)
+
+To add an additional EC2 instance as a worker node to your existing kubeadm cluster:
+
+**On the control-plane node:**
+
+1. Generate a join command with a fresh token (valid for 24 hours):
+
+```bash
+sudo kubeadm token create --print-join-command
+```
+
+This outputs something like:
+
+```
+kubeadm join <CONTROL_PLANE_IP>:6443 --token <TOKEN> --discovery-token-ca-cert-hash sha256:<HASH>
+```
+
+**On the new worker node EC2 instance:**
+
+2. Complete the [Installation Guide](installation.md) prerequisites (Docker, kubeadm, kubelet, kubectl).
+
+3. Run the join command from step 1 as root:
+
+```bash
+sudo kubeadm join <CONTROL_PLANE_IP>:6443 --token <TOKEN> --discovery-token-ca-cert-hash sha256:<HASH>
+```
+
+**Verify from the control-plane:**
+
+4. Check that the new worker node appears:
+
+```bash
+kubectl get nodes
+```
+
+The new node should show `Ready` status after a minute or two (once the CNI plugin configures networking).
+
 ## Post-Installation Setup
 
 ### Install MetalLB (Load Balancer)
